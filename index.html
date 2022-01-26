@@ -7,23 +7,11 @@
 
         <script type="text/javascript"> 
             var totalCount = 9;
-            function ChangeIt() {
+            function changePicture() {
                 var num = Math.ceil(Math.random() * totalCount );
-                console.log(num);
                 var element = document.getElementById("background-image");
                 element.style.backgroundImage = "url('bgimages/" + num + ".jpeg')";
-                console.log(element);
             }
-        </script>
-        
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-218260226-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'UA-218260226-1');
         </script>
 
         <style>
@@ -96,9 +84,13 @@
         </div>
     </body>
     <script type="text/javascript"> 
-        ChangeIt();
-        setTimeout(function () {
-            location.reload();
-        }, 10000)
+        function loop() {
+            setTimeout(function () {
+                changePicture();
+                loop();
+            }, 3000);
+        }
+
+        loop();
     </script>
 </html>
